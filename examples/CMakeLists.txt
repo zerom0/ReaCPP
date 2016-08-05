@@ -1,0 +1,2 @@
+add_subdirectory(greap)
+add_subdirectory(sum_of_even_squares)
