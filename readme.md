@@ -75,7 +75,6 @@ The following example works on input values of type int and sums them up until t
 
     auto sum = reduce(0, [](int acc, int v){ return acc + v; });
 
-
 ### Joining operator |
 
 This library provides the operator | to combine reactive components into processing chains. This operator can only join components when the output type of the first component matches the input type of the second component.
@@ -83,3 +82,11 @@ This library provides the operator | to combine reactive components into process
 The following example combines the above shown examples and creates a processing chain that outputs the sum of even squares of all input values.
 
     auto sum_of_even_squares = square | keep_even | sum | output;
+
+### Insert
+
+Duplicates all received elementes and passes one to component2 as it would happen without the insert and then it passes the other to component1 for preprocessing before passing it to component 2. Therefore it allows to add new elements based on previous elements.
+The Output of component1 must match its own and component2's input type.
+
+    auto add = insert(component1) | component2
+
